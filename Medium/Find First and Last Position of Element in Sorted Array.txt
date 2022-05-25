@@ -1,0 +1,45 @@
+class Solution {
+    public int[] searchRange(int[] arr, int t) {
+        int start =0;
+        int mid ;
+        int end = arr.length -1;
+
+        int[] res = {-1,-1};
+        if(arr.length == 0){
+            return res;
+        }
+   
+
+
+       while(start<end){
+            mid = start - (start-end)/2;
+            if(arr[mid] >=t){
+                end = mid;
+            }
+            else{
+                start = mid+1;
+            }
+       }
+
+       if(arr[start] != t){
+           return res;
+       }
+
+       res[0] = start;
+
+       end = arr.length;
+
+         while(start<end){
+            mid = start - (start-end)/2;
+            if(arr[mid] >t){
+                end = mid;
+            }
+            else{
+                start = mid+1;
+            }
+         }
+
+        res[1] =start -1;
+        return res;
+    }
+}
